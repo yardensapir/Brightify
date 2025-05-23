@@ -22,15 +22,15 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { 
-      label: "LinkedIn", 
-      href: "#", 
-      icon: Linkedin 
+    {
+      label: "LinkedIn",
+      href: "#",
+      icon: Linkedin,
     },
-    { 
-      label: "Email", 
-      href: "mailto:contact@brightify.com", 
-      icon: Mail 
+    {
+      label: "Email",
+      href: "mailto:contact@brightify.com",
+      icon: Mail,
     },
   ];
 
@@ -51,9 +51,9 @@ const Footer = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
-        ease: "easeOut" 
+        ease: "easeOut",
       },
     },
   };
@@ -61,7 +61,7 @@ const Footer = () => {
   return (
     <footer className="py-12 border-t border-fuchsia-900/20 bg-[#06051a]">
       <div className="container mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-4 gap-8 mb-8"
           initial="hidden"
           whileInView="visible"
@@ -69,10 +69,7 @@ const Footer = () => {
           variants={footerVariants}
         >
           {/* Logo and Description */}
-          <motion.div 
-            className="md:col-span-2"
-            variants={itemVariants}
-          >
+          <motion.div className="md:col-span-2" variants={itemVariants}>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-600 rounded-lg flex items-center justify-center shadow-md shadow-fuchsia-900/20">
                 <img
@@ -118,16 +115,18 @@ const Footer = () => {
                     <a
                       href={social.href}
                       className="text-gray-400 hover:text-fuchsia-400 transition-colors text-sm focus:outline-none flex items-center space-x-2 group"
-                      target={social.href.startsWith("http") ? "_blank" : "_self"}
+                      target={
+                        social.href.startsWith("http") ? "_blank" : "_self"
+                      }
                       rel={
                         social.href.startsWith("http")
                           ? "noopener noreferrer"
                           : ""
                       }
                     >
-                      <IconComponent 
-                        size={16} 
-                        className="group-hover:text-fuchsia-400 transition-colors" 
+                      <IconComponent
+                        size={16}
+                        className="group-hover:text-fuchsia-400 transition-colors"
                       />
                       <span>{social.label}</span>
                     </a>
@@ -139,7 +138,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Bottom Bar */}
-        <motion.div 
+        <motion.div
           className="pt-8 border-t border-fuchsia-900/20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -149,11 +148,6 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-500 text-sm">
               © 2025 Brightify. All rights reserved.
-            </div>
-            <div className="text-gray-500 text-xs">
-              <a href="#" className="hover:text-fuchsia-400 transition-colors">Privacy Policy</a>
-              <span className="mx-2">|</span>
-              <a href="#" className="hover:text-fuchsia-400 transition-colors">Terms of Service</a>
             </div>
           </div>
         </motion.div>
