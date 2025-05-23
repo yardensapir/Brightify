@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useInView} from "framer-motion";
 import dnaImage from "../assets/dna.png";
 import maayanImage from "../assets/maayan.png";
 import phoneImage from "../assets/phone.png";
 import seasonPassImage from "../assets/season-pass.png";
 import tabletImage from "../assets/tablet.png";
-import logoImage from "../assets/logo.jpeg";
 import ContactModal from "./ContactModal";
 
 const BrightifyLanding = () => {
