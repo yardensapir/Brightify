@@ -266,9 +266,9 @@ const BrightifyLanding = () => {
     <>
       <div className="min-h-screen bg-[#06051a] bg-gradient-to-br from-[#06051a] via-[#150f35] to-[#291544]">
         {/* Hero Section */}
-        <section id="hero" className="py-16 pt-32 relative overflow-hidden">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <section id="hero" className="py-8 md:py-16 pt-20 md:pt-32 relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -278,7 +278,7 @@ const BrightifyLanding = () => {
                   delay: 0.3
                 }}
               >
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -305,7 +305,7 @@ const BrightifyLanding = () => {
                   </motion.span>
                 </h1>
                 <motion.p 
-                  className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg"
+                  className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed max-w-lg"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.1 }}
@@ -314,7 +314,7 @@ const BrightifyLanding = () => {
                   first click to long-term retention
                 </motion.p>
                 <motion.button 
-                  className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25"
+                  className="bg-violet-600 hover:bg-violet-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25 w-full md:w-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.3 }}
@@ -333,8 +333,7 @@ const BrightifyLanding = () => {
                 style={{ y: phoneImageY, scale: phoneImageScale }}
               >
                 <motion.div
-                  className="relative mx-auto"
-                  style={{ width: "434px", height: "673px" }}
+                  className="relative mx-auto w-full max-w-[434px] h-[673px] md:w-[434px] md:h-[673px]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -342,7 +341,7 @@ const BrightifyLanding = () => {
                   <img
                     src={phoneImage}
                     alt="Gaming interface on phone"
-                    className="w-full h-full object-cover rounded-3xl"
+                    className="w-full h-full object-contain rounded-3xl"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/20 to-cyan-500/20 rounded-3xl"
@@ -357,12 +356,12 @@ const BrightifyLanding = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <section id="services" className="py-12 md:py-20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-16 mb-12 md:mb-20">
               {/* Pre-Production */}
-              <div className="flex flex-col lg:flex-row items-center gap-8">
-                <div className="lg:w-1/2">
+              <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8">
+                <div className="w-full lg:w-1/2">
                   <ServiceImage src={dnaImage} alt="DNA helix with gaming elements" />
                 </div>
                 <ServiceContent 
@@ -376,8 +375,8 @@ const BrightifyLanding = () => {
               </div>
 
               {/* Prototyping */}
-              <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
-                <div className="lg:w-1/2">
+              <div className="flex flex-col lg:flex-row-reverse items-center gap-6 md:gap-8">
+                <div className="w-full lg:w-1/2">
                   <ServiceImage src={tabletImage} alt="Game character on tablet" />
                 </div>
                 <ServiceContent 
@@ -390,8 +389,8 @@ const BrightifyLanding = () => {
             </div>
 
             {/* Post-Launch */}
-            <div className="flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2">
+            <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8">
+              <div className="w-full lg:w-1/2">
                 <ServiceImage src={seasonPassImage} alt="Season pass interface" />
               </div>
               <ServiceContent 
@@ -405,22 +404,22 @@ const BrightifyLanding = () => {
         </section>
 
         {/* Stats Section */}
-        <section id="stats" className="py-20 bg-[#0a071f] bg-opacity-60 backdrop-blur-sm">
-          <div className="container mx-auto px-6">
+        <section id="stats" className="py-12 md:py-20 bg-[#0a071f] bg-opacity-60 backdrop-blur-sm">
+          <div className="container mx-auto px-4 md:px-6">
             <motion.div 
-              className="text-center mb-16"
+              className="text-center mb-8 md:mb-16"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 By the Numbers – Real Impact, Real Players
               </h2>
             </motion.div>
 
             <motion.div 
-              className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -455,17 +454,17 @@ const BrightifyLanding = () => {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20">
-          <div className="container mx-auto px-6">
+        <section id="about" className="py-12 md:py-20">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                   variants={imageScaleVariant}
                 >
-                  <div className="w-full max-w-md mx-auto h-96 rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden">
+                  <div className="w-full max-w-md mx-auto h-64 md:h-96 rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden">
                     <motion.img
                       src={maayanImage}
                       alt="Maayan portrait"
@@ -530,16 +529,16 @@ const BrightifyLanding = () => {
         </section>
 
         {/* Process Section */}
-        <section id="process" className="py-20 bg-[#0a071f] bg-opacity-60 backdrop-blur-sm">
-          <div className="container mx-auto px-6">
+        <section id="process" className="py-12 md:py-20 bg-[#0a071f] bg-opacity-60 backdrop-blur-sm">
+          <div className="container mx-auto px-4 md:px-6">
             <motion.div 
-              className="text-center mb-16"
+              className="text-center mb-8 md:mb-16"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
               variants={fadeInUpVariant}
             >
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">
                 Simple, Transparent Process
               </h2>
             </motion.div>
@@ -551,7 +550,7 @@ const BrightifyLanding = () => {
               viewport={{ once: false, amount: 0.2 }}
               variants={staggerContainer}
             >
-              <div className="grid md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                 <ProcessStep
                   icon="📋"
                   title="Briefing"
@@ -582,10 +581,10 @@ const BrightifyLanding = () => {
         </section>
 
         {/* CTA Section */}
-        <section id="cta" className="py-20">
-          <div className="container mx-auto px-6 text-center">
+        <section id="cta" className="py-12 md:py-20">
+          <div className="container mx-auto px-4 md:px-6 text-center">
             <motion.h2 
-              className="text-4xl font-bold text-white mb-6"
+              className="text-2xl md:text-4xl font-bold text-white mb-6"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -594,7 +593,7 @@ const BrightifyLanding = () => {
               Ready to Learn What Drives Your Players?
             </motion.h2>
             <motion.button 
-              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-12 py-4 rounded-xl text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-fuchsia-500/25"
+              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-8 md:px-12 py-3 md:py-4 rounded-xl text-lg md:text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-fuchsia-500/25 w-full md:w-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
