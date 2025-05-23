@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImage from "../assets/Logo.jpeg";
 
@@ -6,18 +6,38 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const lastScrollY = useRef(0);
+  const [showNav, setShowNav] = useState(true);
 
-  // Add scroll detection for enhanced navbar background
+  // Add scroll detection for enhanced navbar background and scroll direction
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      const currentScrollY = window.scrollY;
+      
+      // Determine scroll direction
+      if (currentScrollY < lastScrollY.current) {
+        setIsScrollingUp(true);
+        setShowNav(true);
+      } else {
+        setIsScrollingUp(false);
+        if (currentScrollY > 20) {
+          setShowNav(false);
+        }
+      }
+      
+      // Update scroll position
+      if (currentScrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
+        setShowNav(true);
       }
+      
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,14 +89,15 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {/* Navigation Links - Hidden when scrolled */}
-            <AnimatePresence>
-              {!scrolled && (
+            {/* Navigation Links - Show when not scrolled or when scrolling up */}
+            <AnimatePresence mode="wait">
+              {showNav && (
                 <motion.div
                   className="flex items-center space-x-8"
-                  initial={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.2 }}
                 >
                   {navItems.map((item) => (
                     <button

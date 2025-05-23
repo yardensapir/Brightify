@@ -328,12 +328,20 @@ const BrightifyLanding = () => {
                   Let's Talk Player Insights
                 </motion.button>
               </motion.div>
+
               <motion.div 
-                className="relative"
+                className="relative order-1 lg:order-2"
                 style={{ y: phoneImageY, scale: phoneImageScale }}
               >
+                {/* Background decorative elements for mobile */}
+                <div className="absolute inset-0 lg:hidden">
+                  <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-full blur-xl"></div>
+                  <div className="absolute bottom-8 left-4 w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-lg"></div>
+                  <div className="absolute top-1/2 right-8 w-8 h-8 bg-gradient-to-br from-pink-500/30 to-purple-500/30 rounded-full blur-md"></div>
+                </div>
+                
                 <motion.div
-                  className="relative mx-auto w-full max-w-[434px] h-[673px] md:w-[434px] md:h-[673px]"
+                  className="relative mx-auto w-full max-w-[280px] h-[435px] md:max-w-[434px] md:h-[673px]" // Smaller on mobile
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -459,69 +467,45 @@ const BrightifyLanding = () => {
             <div className="max-w-6xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.3 }}
-                  variants={imageScaleVariant}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <div className="w-full max-w-md mx-auto h-64 md:h-96 rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden">
-                    <motion.img
+                  <div className="w-full max-w-md mx-auto h-64 md:h-96 rounded-2xl shadow-2xl overflow-hidden">
+                    <img
                       src={maayanImage}
                       alt="Maayan portrait"
                       className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.5 }}
                     />
                   </div>
                 </motion.div>
                 <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.3 }}
-                  variants={fadeInRightVariant}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5 }}
                 >
                   <h2 className="text-4xl font-bold text-white mb-8">About</h2>
-                  <motion.p 
-                    className="text-gray-300 text-lg leading-relaxed mb-6"
-                    variants={fadeInUpVariant}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
                     Hi, I'm{" "}
                     <span className="text-fuchsia-400 font-semibold">Maayan</span>.
                     A behavioral psychologist who understands games—and the people
                     who play them. My research is systematic, objective, and built
                     to move fast without sacrificing rigor.
-                  </motion.p>
-                  <motion.p 
-                    className="text-gray-300 text-lg leading-relaxed mb-6"
-                    variants={fadeInUpVariant}
-                    transition={{ delay: 0.4 }}
-                  >
+                  </p>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
                     I work with product, UX, and marketing teams to generate
                     clarity, drive successful launches, and fuel confident
                     decisions.
-                  </motion.p>
-                  <motion.p 
-                    className="text-gray-300 text-lg leading-relaxed"
-                    variants={fadeInUpVariant}
-                    transition={{ delay: 0.6 }}
-                  >
+                  </p>
+                  <p className="text-gray-300 text-lg leading-relaxed">
                     My work has shaped games generating over{" "}
-                    <motion.span 
-                      className="text-fuchsia-400 font-bold"
-                      whileInView={{ 
-                        scale: [1, 1.2, 1],
-                        transition: { 
-                          duration: 0.8, 
-                          times: [0, 0.5, 1],
-                          delay: 1
-                        }
-                      }}
-                    >
+                    <span className="text-fuchsia-400 font-bold">
                       $1B in revenue
-                    </motion.span>
+                    </span>
                     .
-                  </motion.p>
+                  </p>
                 </motion.div>
               </div>
             </div>
