@@ -1,6 +1,7 @@
 import React from "react";
 import logoImage from "../assets/Logo.jpeg";
 import { motion } from "framer-motion";
+import { Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -21,9 +22,16 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { label: "LinkedIn", href: "#" },
-    { label: "Twitter", href: "#" },
-    { label: "Email", href: "mailto:contact@brightify.com" },
+    { 
+      label: "LinkedIn", 
+      href: "#", 
+      icon: Linkedin 
+    },
+    { 
+      label: "Email", 
+      href: "mailto:contact@brightify.com", 
+      icon: Mail 
+    },
   ];
 
   // Animation variants
@@ -103,22 +111,29 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <h3 className="text-white font-semibold mb-4">Connect</h3>
             <ul className="space-y-2">
-              {socialLinks.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    className="text-gray-400 hover:text-fuchsia-400 transition-colors text-sm focus:outline-none"
-                    target={social.href.startsWith("http") ? "_blank" : "_self"}
-                    rel={
-                      social.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : ""
-                    }
-                  >
-                    {social.label}
-                  </a>
-                </li>
-              ))}
+              {socialLinks.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      className="text-gray-400 hover:text-fuchsia-400 transition-colors text-sm focus:outline-none flex items-center space-x-2 group"
+                      target={social.href.startsWith("http") ? "_blank" : "_self"}
+                      rel={
+                        social.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : ""
+                      }
+                    >
+                      <IconComponent 
+                        size={16} 
+                        className="group-hover:text-fuchsia-400 transition-colors" 
+                      />
+                      <span>{social.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         </motion.div>

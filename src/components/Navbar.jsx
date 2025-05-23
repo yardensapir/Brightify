@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`py-6 relative z-50 fixed w-full top-0 transition-all duration-300 backdrop-blur-sm
+      className={`py-6 sticky top-0 z-50 w-full transition-all duration-300 backdrop-blur-sm
         ${scrolled 
           ? 'bg-gradient-to-br from-indigo-950/95 via-purple-950/95 to-pink-950/95 shadow-md shadow-fuchsia-900/10' 
           : 'bg-gradient-to-br from-indigo-950/90 via-purple-950/90 to-pink-950/90'
@@ -64,17 +64,31 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`nav-link relative text-gray-200 hover:text-white font-semibold uppercase text-sm tracking-wide transition-colors duration-400 focus:outline-none
-                  ${activeSection === item.id ? 'text-fuchsia-400' : ''}`}
-              >
-                {item.label}
-                <div className="absolute bottom-[-2px] left-1/2 w-0 h-0.5 bg-fuchsia-500 pointer-events-none transition-all duration-400 ease-in-out group-hover:w-full group-hover:left-0 shadow-sm shadow-fuchsia-500/50"></div>
-              </button>
-            ))}
+            {/* Navigation Links - Hidden when scrolled */}
+            <AnimatePresence>
+              {!scrolled && (
+                <motion.div 
+                  className="flex items-center space-x-8"
+                  initial={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`nav-link relative text-gray-200 hover:text-white font-semibold uppercase text-sm tracking-wide transition-colors duration-400 focus:outline-none
+                        ${activeSection === item.id ? 'text-fuchsia-400' : ''}`}
+                    >
+                      {item.label}
+                      <div className="absolute bottom-[-2px] left-1/2 w-0 h-0.5 bg-fuchsia-500 pointer-events-none transition-all duration-400 ease-in-out group-hover:w-full group-hover:left-0 shadow-sm shadow-fuchsia-500/50"></div>
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            {/* Book a Call Button - Always visible */}
             <button 
               className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none shadow-md shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40"
               onClick={() => scrollToSection('contact')}
@@ -83,29 +97,40 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Burger Menu Button */}
-          <button 
-            className="md:hidden relative w-8 h-8 flex items-center justify-center focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <div className="w-6 h-5 relative flex flex-col justify-between">
-              <motion.span 
-                className="w-full h-0.5 bg-white rounded-full"
-                animate={isMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.span 
-                className="w-full h-0.5 bg-white rounded-full"
-                animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.span 
-                className="w-full h-0.5 bg-white rounded-full"
-                animate={isMenuOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-          </button>
+          {/* Mobile Navigation - Book a Call + Burger Menu */}
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Mobile Book a Call Button */}
+            <button 
+              className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none shadow-md shadow-fuchsia-500/20 text-sm"
+              onClick={() => scrollToSection('contact')}
+            >
+              Book a Call
+            </button>
+
+            {/* Mobile Burger Menu Button */}
+            <button 
+              className="relative w-8 h-8 flex items-center justify-center focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <div className="w-6 h-5 relative flex flex-col justify-between">
+                <motion.span 
+                  className="w-full h-0.5 bg-white rounded-full"
+                  animate={isMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span 
+                  className="w-full h-0.5 bg-white rounded-full"
+                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span 
+                  className="w-full h-0.5 bg-white rounded-full"
+                  animate={isMenuOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -135,15 +160,6 @@ const Navbar = () => {
                     {item.label}
                   </motion.button>
                 ))}
-                <motion.button 
-                  className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 mt-4 focus:outline-none shadow-md shadow-fuchsia-500/20"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
-                  onClick={() => scrollToSection('contact')}
-                >
-                  Book a Call
-                </motion.button>
               </div>
             </motion.div>
           )}
