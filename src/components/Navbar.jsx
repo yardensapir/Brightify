@@ -165,44 +165,38 @@ const Navbar = () => {
           {isMenuOpen && (
             <motion.div
               className="md:hidden mt-4 bg-gradient-to-br from-indigo-950/95 via-purple-950/95 to-pink-950/95 rounded-xl backdrop-blur-md shadow-lg"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
               <div className="flex flex-col py-6 px-6 space-y-4">
-                {navItems.map((item, index) => (
-                  <motion.button
+                {navItems.map((item) => (
+                  <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`text-left py-2 text-lg focus:outline-none transition-all duration-300
+                    className={`text-left py-2 text-lg focus:outline-none transition-colors duration-200
                       ${
                         activeSection === item.id
-                          ? "text-fuchsia-400 pl-2"
-                          : "text-gray-200 hover:text-fuchsia-300 hover:pl-2"
+                          ? "text-fuchsia-400"
+                          : "text-gray-200 hover:text-fuchsia-300"
                       }`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
                     {item.label}
-                  </motion.button>
+                  </button>
                 ))}
                 {/* Book a Call Button in Mobile Menu */}
-                <motion.button
+                <button
                   onClick={() =>
                     window.open(
                       "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2h-p96Bu2TGVh-qph3btwH5J0odPpEeWzBx6Rw34yFwVlJaX_gGJc_nG2PelDhtMTZEoOKDvJj",
                       "_blank"
                     )
                   }
-                  className="mt-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none shadow-md shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                  className="mt-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-200"
                 >
                   Book a Call
-                </motion.button>
+                </button>
               </div>
             </motion.div>
           )}
