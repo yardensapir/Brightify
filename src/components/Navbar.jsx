@@ -21,7 +21,7 @@ const Navbar = () => {
         setShowNav(true);
       } else {
         setIsScrollingUp(false);
-        if (currentScrollY > 20) {
+        if (currentScrollY > 100) {
           setShowNav(false);
         }
       }
@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`py-6 sticky top-0 z-50 w-full transition-all duration-300 backdrop-blur-sm
+      className={`py-6 fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 backdrop-blur-sm
         ${
           scrolled
             ? "bg-gradient-to-br from-indigo-950/95 via-purple-950/95 to-pink-950/95 shadow-md shadow-fuchsia-900/10"
@@ -128,21 +128,8 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation - Book a Call + Burger Menu */}
-          <div className="md:hidden flex items-center space-x-3">
-            {/* Mobile Book a Call Button */}
-            <button
-              className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none shadow-md shadow-fuchsia-500/20 text-sm"
-              onClick={() =>
-                window.open(
-                  "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2h-p96Bu2TGVh-qph3btwH5J0odPpEeWzBx6Rw34yFwVlJaX_gGJc_nG2PelDhtMTZEoOKDvJj",
-                  "_blank"
-                )
-              }
-            >
-              Book a Call
-            </button>
-
+          {/* Mobile Navigation - Burger Menu Only */}
+          <div className="md:hidden flex items-center">
             {/* Mobile Burger Menu Button */}
             <button
               className="relative w-8 h-8 flex items-center justify-center focus:outline-none"
@@ -201,6 +188,21 @@ const Navbar = () => {
                     {item.label}
                   </motion.button>
                 ))}
+                {/* Book a Call Button in Mobile Menu */}
+                <motion.button
+                  onClick={() =>
+                    window.open(
+                      "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2h-p96Bu2TGVh-qph3btwH5J0odPpEeWzBx6Rw34yFwVlJaX_gGJc_nG2PelDhtMTZEoOKDvJj",
+                      "_blank"
+                    )
+                  }
+                  className="mt-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none shadow-md shadow-fuchsia-500/20 hover:shadow-fuchsia-500/40"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                >
+                  Book a Call
+                </motion.button>
               </div>
             </motion.div>
           )}

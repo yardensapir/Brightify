@@ -264,10 +264,10 @@ const BrightifyLanding = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-[#06051a] bg-gradient-to-br from-[#06051a] via-[#150f35] to-[#291544]">
+      <div className="min-h-screen bg-[#06051a] bg-gradient-to-br from-[#06051a] via-[#150f35] to-[#291544] overflow-x-hidden">
         {/* Hero Section */}
         <section id="hero" className="py-8 md:py-16 pt-20 md:pt-32 relative overflow-hidden">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-[100vw]">
             {/* Mobile: Single column with background pattern */}
             <div className="lg:hidden relative">
               {/* Animated background pattern */}
@@ -277,11 +277,12 @@ const BrightifyLanding = () => {
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4 items-center relative z-10">
+              <div className="grid grid-cols-1 gap-8 items-center relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                  className="text-center"
                 >
                   <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
                     <motion.span
@@ -310,7 +311,7 @@ const BrightifyLanding = () => {
                     </motion.span>
                   </h1>
                   <motion.p 
-                    className="text-base text-gray-300 mb-6 leading-relaxed"
+                    className="text-base text-gray-300 mb-6 leading-relaxed max-w-md mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 1.1 }}
@@ -319,7 +320,7 @@ const BrightifyLanding = () => {
                     first click to long-term retention
                   </motion.p>
                   <motion.button 
-                    className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25 w-full"
+                    className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25 w-full max-w-xs mx-auto"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.3 }}
@@ -334,7 +335,7 @@ const BrightifyLanding = () => {
                   </motion.button>
                   {/* Decorative break */}
                   <motion.div 
-                    className="w-24 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full mt-6"
+                    className="w-24 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full mt-6 mx-auto"
                     initial={{ opacity: 0, scaleX: 0 }}
                     animate={{ opacity: 1, scaleX: 1 }}
                     transition={{ duration: 0.8, delay: 1.5 }}
@@ -342,11 +343,11 @@ const BrightifyLanding = () => {
                 </motion.div>
 
                 <motion.div 
-                  className="relative"
+                  className="relative flex justify-center"
                   style={{ y: phoneImageY, scale: phoneImageScale }}
                 >
                   <motion.div
-                    className="relative mx-auto w-full max-w-[160px] h-[248px]"
+                    className="relative mx-auto w-full max-w-[200px] h-[310px]"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}

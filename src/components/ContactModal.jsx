@@ -67,10 +67,10 @@ const ContactModal = ({ isOpen, onClose }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -80,7 +80,7 @@ const ContactModal = ({ isOpen, onClose }) => {
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-indigo-950/95 via-purple-950/95 to-pink-950/95 rounded-2xl shadow-2xl border border-fuchsia-900/20"
+          className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-indigo-950/95 via-purple-950/95 to-pink-950/95 rounded-2xl shadow-2xl border border-fuchsia-900/20 mx-4"
           variants={modalVariants}
           initial="hidden"
           animate="visible"
@@ -89,7 +89,7 @@ const ContactModal = ({ isOpen, onClose }) => {
           {/* Header */}
           <div className="sticky top-0 bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10 backdrop-blur-md border-b border-fuchsia-900/20 p-4 sm:p-6">
             <div className="flex items-center justify-between">
-              <div>
+              <div className="pr-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">
                   Let's Talk Player Insights
                 </h2>
@@ -110,7 +110,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                     message: "",
                   });
                 }}
-                className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors focus:outline-none"
+                className="flex-shrink-0 p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors focus:outline-none"
               >
                 <X size={20} className="text-gray-400 hover:text-white" />
               </button>
