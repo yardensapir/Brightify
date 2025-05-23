@@ -268,7 +268,107 @@ const BrightifyLanding = () => {
         {/* Hero Section */}
         <section id="hero" className="py-8 md:py-16 pt-20 md:pt-32 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Mobile: Single column with background pattern */}
+            <div className="lg:hidden relative">
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 items-center relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                >
+                  <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    >
+                      See Through
+                    </motion.span>
+                    <br />
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.7 }}
+                      className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-pink-500"
+                    >
+                      Players'
+                    </motion.span>
+                    <br />
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.9 }}
+                    >
+                      Eyes
+                    </motion.span>
+                  </h1>
+                  <motion.p 
+                    className="text-base text-gray-300 mb-6 leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 1.1 }}
+                  >
+                    On-demand research that reveals what drives your players—from
+                    first click to long-term retention
+                  </motion.p>
+                  <motion.button 
+                    className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25 w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.3 }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      boxShadow: "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 10px 10px -5px rgba(139, 92, 246, 0.1)" 
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={openContactModal}
+                  >
+                    Let's Talk Player Insights
+                  </motion.button>
+                  {/* Decorative break */}
+                  <motion.div 
+                    className="w-24 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full mt-6"
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 1.5 }}
+                  />
+                </motion.div>
+
+                <motion.div 
+                  className="relative"
+                  style={{ y: phoneImageY, scale: phoneImageScale }}
+                >
+                  <motion.div
+                    className="relative mx-auto w-full max-w-[160px] h-[248px]"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    <img
+                      src={phoneImage}
+                      alt="Gaming interface on phone"
+                      className="w-full h-full object-contain rounded-3xl"
+                    />
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/20 to-cyan-500/20 rounded-3xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1.5, delay: 0.8 }}
+                    ></motion.div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Desktop: Keep original layout */}
+            <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -278,7 +378,7 @@ const BrightifyLanding = () => {
                   delay: 0.3
                 }}
               >
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
+                <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
                   <motion.span
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -305,7 +405,7 @@ const BrightifyLanding = () => {
                   </motion.span>
                 </h1>
                 <motion.p 
-                  className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed max-w-lg"
+                  className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.1 }}
@@ -314,7 +414,7 @@ const BrightifyLanding = () => {
                   first click to long-term retention
                 </motion.p>
                 <motion.button 
-                  className="bg-violet-600 hover:bg-violet-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25 w-full md:w-auto"
+                  className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-violet-500/25"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.3 }}
@@ -327,21 +427,20 @@ const BrightifyLanding = () => {
                 >
                   Let's Talk Player Insights
                 </motion.button>
+                {/* Decorative break */}
+                <motion.div 
+                  className="w-32 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full mt-8"
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 1.5 }}
+                />
               </motion.div>
-
               <motion.div 
-                className="relative order-1 lg:order-2"
+                className="relative"
                 style={{ y: phoneImageY, scale: phoneImageScale }}
               >
-                {/* Background decorative elements for mobile */}
-                <div className="absolute inset-0 lg:hidden">
-                  <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-full blur-xl"></div>
-                  <div className="absolute bottom-8 left-4 w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-lg"></div>
-                  <div className="absolute top-1/2 right-8 w-8 h-8 bg-gradient-to-br from-pink-500/30 to-purple-500/30 rounded-full blur-md"></div>
-                </div>
-                
                 <motion.div
-                  className="relative mx-auto w-full max-w-[280px] h-[435px] md:max-w-[434px] md:h-[673px]" // Smaller on mobile
+                  className="relative mx-auto w-full max-w-[434px] h-[673px]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
