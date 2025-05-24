@@ -266,7 +266,7 @@ const BrightifyLanding = () => {
     <>
       <div className="min-h-screen bg-[#06051a] bg-gradient-to-br from-[#06051a] via-[#150f35] to-[#291544] overflow-x-hidden">
         {/* Hero Section */}
-        <section id="hero" className="py-8 md:py-16 pt-20 md:pt-32 relative overflow-hidden">
+        <section id="hero" className="py-8 md:py-16 pt-32 md:pt-32 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 max-w-[100vw]">
             {/* Mobile: Single column with background pattern */}
             <div className="lg:hidden relative">
